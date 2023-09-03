@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//This code was written by Max Kottong of Team 1 (TECH TITANS)
+
 public class App {
     static ArrayList<Student> students = new ArrayList<Student>();
     static ArrayList<Teacher> teachers = new ArrayList<Teacher>();
@@ -22,6 +24,7 @@ public class App {
         System.out.println("6 - Delete a teacher");
         System.out.println("7 - Change a teacher");
         System.out.println("8 - Display teacher");
+        System.out.println("9: Exit");
 
         int choice = input.nextInt();
         input.nextLine();
@@ -105,6 +108,8 @@ public class App {
         } else {
             students.removeIf(e -> e.getId().equals(id));
             System.out.println("Student removed successfully");
+
+            pressEnterToContinue();
             start();
         }
     }
@@ -131,9 +136,11 @@ public class App {
             String newStudentId = input.nextLine();
 
             Student newStudent = new Student(newStudentName, newStudentAge, newStudentGrade, newStudentId);
-
             students.set(students.indexOf(id), newStudent);
-            
+
+            System.out.println("Student changed successfully");
+
+            pressEnterToContinue();
             start();
             input.close();
         }
@@ -144,6 +151,7 @@ public class App {
             System.out.println(stu);
         }
 
+        pressEnterToContinue();
         start();
     }
 
@@ -189,6 +197,8 @@ public class App {
         } else {
             teachers.removeIf(e -> e.getId().equals(id));
             System.out.println("Teacher removed successfully");
+
+            pressEnterToContinue();
             start();
         }
     }
@@ -221,7 +231,10 @@ public class App {
             Teacher newTeacher = new Teacher(newTeacherName, newTeacherAge, newTeacherSection, newTeacherSalary, newTeacherId);
 
             teachers.set(teachers.indexOf(id), newTeacher);
-            
+
+            System.out.println("Teacher changed successfully");
+
+            pressEnterToContinue();
             start();
             input.close();
         }
@@ -232,6 +245,7 @@ public class App {
             System.out.println(tea);
         }
 
+        pressEnterToContinue();
         start();
     }
 
@@ -239,5 +253,17 @@ public class App {
         Teacher teacher = (Teacher)teachers.stream().filter(tea -> id.equals(tea.id)).findFirst().orElse(null);
 
         return teacher;
+    }
+
+    private static void pressEnterToContinue() { 
+        Scanner input = new Scanner(System.in);
+        System.out.println("Press Enter key to continue...");
+        try {
+            System.in.read();
+            input.nextLine();
+            //input close somewhere without error??
+        }  
+        catch(Exception e)
+        {}
     }
 }
