@@ -1,5 +1,5 @@
 public class Student extends Person {
-    public String grade;
+    private String grade;
 
     public Student(String name, int age, String grade, String id) {
         super(name, age, id);
