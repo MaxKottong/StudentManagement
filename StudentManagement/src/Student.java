@@ -6,10 +6,6 @@ public class Student extends Person {
         this.grade = grade;
     }
 
-    public getStudentName() {
-
-    }
-
     @Override
     public String toString() {
         return "Student: " + name + ", " + "Age: " + age + ", " + "Grade: " + grade + ", " + "ID: " + id;
