@@ -24,6 +24,7 @@ public class App {
         System.out.println("8 - Display teacher");
 
         int choice = input.nextInt();
+        input.nextLine();
 
         String studentId;
         String teacherId;
@@ -36,14 +37,12 @@ public class App {
                 System.out.println("What is the ID of the student you want to delete?");
                 studentId = input.nextLine();
 
-                input.close();
                 deleteStudent(studentId);
                 break;
             case 3:
                 System.out.println("What is the ID of the student you want to change?");
                 studentId = input.nextLine();
 
-                input.close();
                 changeStudent(studentId);
                 break;
             case 4:
@@ -56,19 +55,19 @@ public class App {
                 System.out.println("What is the ID of the teacher you want to delete?");
                 teacherId = input.nextLine();
 
-                input.close();
                 deleteTeacher(teacherId);
                 break;
             case 7:
                 System.out.println("What is the ID of the teacher you want to change?");
                 teacherId = input.nextLine();
 
-                input.close();
                 changeTeacher(teacherId);
                 break;
             case 8:
                 displayTeachers();
                 break;
+            case 9:
+                System.exit(0);
         }
 
         input.close();
@@ -104,18 +103,39 @@ public class App {
             System.out.println("A student with that ID does not exist");
             start();
         } else {
-            //delete student here
+            students.removeIf(e -> e.getId().equals(id));
+            System.out.println("Student removed successfully");
+            start();
         }
     }
 
     public static void changeStudent(String id) {
+        Scanner input = new Scanner(System.in);
         Student student = getStudentFromArray(id);
 
         if (student == null) {
             System.out.println("A student with that ID does not exist");
             start();
         } else {
-            //change student here
+            System.out.println("What would you like to change the students name to?");
+            String newStudentName = input.nextLine();
+            
+            System.out.println("What would you like to change the students age to?");
+            int newStudentAge = input.nextInt();
+            input.nextLine();
+
+            System.out.println("What would you like to change the students grade to?");
+            String newStudentGrade = input.nextLine();
+
+            System.out.println("What would you like to change the students id to?");
+            String newStudentId = input.nextLine();
+
+            Student newStudent = new Student(newStudentName, newStudentAge, newStudentGrade, newStudentId);
+
+            students.set(students.indexOf(id), newStudent);
+            
+            start();
+            input.close();
         }
     }
 
@@ -123,6 +143,8 @@ public class App {
         for (Student stu : students) {
             System.out.println(stu);
         }
+
+        start();
     }
 
     private static Student getStudentFromArray(String id) {
@@ -165,18 +187,43 @@ public class App {
             System.out.println("A teacher with that ID does not exist");
             start();
         } else {
-            //delete teacher here
+            teachers.removeIf(e -> e.getId().equals(id));
+            System.out.println("Teacher removed successfully");
+            start();
         }
     }
 
     public static void changeTeacher(String id) {
+        Scanner input = new Scanner(System.in);
         Teacher teacher = getTeacherFromArray(id);
 
         if (teacher == null) {
             System.out.println("A teacher with that ID does not exist");
             start();
         } else {
-            //change teacher here
+            System.out.println("What would you like to change the teachers name to?");
+            String newTeacherName = input.nextLine();
+            
+            System.out.println("What would you like to change the teachers age to?");
+            int newTeacherAge = input.nextInt();
+            input.nextLine();
+
+            System.out.println("What would you like to change the teachers section to?");
+            String newTeacherSection = input.nextLine();
+
+            System.out.println("What would you like to change the teachers salary to?");
+            int newTeacherSalary = input.nextInt();
+            input.nextLine();
+
+            System.out.println("What would you like to change the teachers id to?");
+            String newTeacherId = input.nextLine();
+
+            Teacher newTeacher = new Teacher(newTeacherName, newTeacherAge, newTeacherSection, newTeacherSalary, newTeacherId);
+
+            teachers.set(teachers.indexOf(id), newTeacher);
+            
+            start();
+            input.close();
         }
     }
 
@@ -184,6 +231,8 @@ public class App {
         for (Teacher tea : teachers) {
             System.out.println(tea);
         }
+
+        start();
     }
 
     private static Teacher getTeacherFromArray(String id) {

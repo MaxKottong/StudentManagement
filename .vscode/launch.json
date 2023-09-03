@@ -15,7 +15,8 @@
             "name": "App",
             "request": "launch",
             "mainClass": "App",
-            "projectName": "StudentManagement_58a7b5bf"
+            "projectName": "StudentManagement_58a7b5bf",
+            "java.debug.settings.console": "internalConsole"
         }
     ]
 }
