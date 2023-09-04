@@ -1,8 +1,15 @@
 public class Teacher extends Person{
     int salary;
+    String section;
 
-    public Teacher(String name, int age, int salary, String id) {
+    public Teacher(String name, int age, String section, int salary, String id) {
         super(name, age, id);
-        salary = this.salary;
+        this.salary = salary;
+        this.section = section;
+    }
+
+    @Override
+    public String toString() {
+        return "Teacher: " + name + ", " + "Age: " + age + ", " + "Section: " + section + ", " + "Salary: " + salary + ", " + "ID: " + id;
     }
 }
