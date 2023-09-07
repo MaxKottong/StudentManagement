@@ -1,5 +1,5 @@
 public class Teacher extends Person{
-    int salary;
+    private int salary;
     String section;
 
     public Teacher(String name, int age, String section, int salary, String id) {
